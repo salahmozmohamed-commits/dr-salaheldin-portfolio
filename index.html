@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Salaheldin Abdin | Arabic Language Teacher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #eef5fb, #ffffff);
+            color: #18324a;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 40px 20px 100px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 25px rgba(25, 72, 110, 0.18);
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 34px;
+            color: #123f63;
+            margin-bottom: 8px;
+        }
+
+        .header h2 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #47708f;
+            margin-bottom: 12px;
+        }
+
+        .motto {
+            font-size: 17px;
+            font-weight: 600;
+            color: #b8860b;
+        }
+
+        /* Quick Links Main Card */
+        .links-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 25px;
+            box-shadow: 0 8px 25px rgba(25, 72, 110, 0.08);
+            border: 1px solid #e1edf5;
+        }
+
+        .section-title {
+            color: #164d75;
+            font-size: 22px;
+            margin-bottom: 22px;
+            border-left: 5px solid #c7a64b;
+            padding-left: 12px;
+            font-weight: bold;
+        }
+
+        /* Quick Links Grid */
+        .links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 68px;
+            background: #174f78;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .link-card:hover {
+            background: #c7a64b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(25, 72, 110, 0.18);
+        }
+
+        /* Contact Fixed Floating Buttons */
+        .contact {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .contact a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #174f78;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact a:hover {
+            background: #c7a64b;
+            transform: scale(1.1);
+        }
+
+        .contact a span {
+            position: absolute;
+            left: 60px;
+            background: #18324a;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact a:hover span {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #78909f;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 650px) {
+            .container { padding: 20px 12px 80px; }
+            .header h1 { font-size: 28px; }
+            .header h2 { font-size: 16px; }
+            .links { grid-template-columns: 1fr; }
+            .contact { left: 15px; bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <img src="Salaheldin.jpeg" alt="Dr. Salaheldin Abdin" class="profile-photo">
+        <h1>Dr. Salaheldin Abdin</h1>
+        <h2>Arabic Language & Islamic Studies Teacher</h2>
+        <div class="motto">بالعربية نرتقي وبالتقنية نبدع</div>
+    </header>
+
+    <!-- ================= QUICK LINKS ================= -->
+    <div class="links-card">
+        <div class="section-title">Quick Links</div>
+        <div class="links">
+            <a href="https://script.google.com/macros/s/AKfycbwya1VZnZsYWKhXT1_-C5P0QSJIgbLYzOfXpvOl2u8GFTGLkzvgBf3gkalP-Tfcms5G/exec" target="_blank" class="link-card">🎓 Grade 6-A Student Portal</a>
+            <a href="https://script.google.com/macros/s/AKfycbxcFWNz2kN8YRLrl0LH-7cSo2qV_7qoaRrUopilmUev8mXbApfgr3OyU39TFVnKI7sE/exec" target="_blank" class="link-card">🎓 Grade 6-B Student Portal</a>
+            <a href="https://script.google.com/macros/s/AKfycbwW0WT243Q2HfizhHqvW74AHD1ZED0RqpTJ3zCTeO2ZrystITlSd3Jwso2OGRBNlgUM/exec" target="_blank" class="link-card">🎓 Grade 8-A Student Portal</a>
+            <a href="https://script.google.com/macros/s/AKfycbyYILdLj1LAtRKKw91Ri8uBgBrEP0brTJ4UFlBiGi_FBYE9nHvuVi8cPDuS2q1KP4JD2g/exec" target="_blank" class="link-card">🎓 Grade 8-B Student Portal</a>
+            <a href="https://drive.google.com/drive/folders/137dyivq33Zl0wfpvi4ZS58alzpwUj6cX?usp=drive_link" target="_blank" class="link-card">📰 School Magazine</a>
+        </div>
+    </div>
+
+    <footer>© 2026 Dr. Salaheldin Abdin — Teacher Portfolio</footer>
+
+</div>
+
+<!-- ================= CONTACT ICONS ================= -->
+<div class="contact">
+    <a href="https://wa.me/0096875095571" target="_blank" aria-label="WhatsApp">
+        💬
+        <span>WhatsApp</span>
+    </a>
+    <a href="mailto:salaheldin.m.abdin@gmail.com
+" aria-label="Email">
+        ✉️
+        <span>Email Me</span>
+    </a>
+</div>
+
+</body>
+</html>
