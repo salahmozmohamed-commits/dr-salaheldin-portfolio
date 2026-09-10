@@ -108,6 +108,70 @@
             box-shadow: 0 8px 18px rgba(25, 72, 110, 0.18);
         }
 
+        /* ================= NEWS TICKER (شريط الأخبار) ================= */
+        .ticker-container {
+            margin-top: 25px;
+            background: #174f78;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(25, 72, 110, 0.15);
+            border: 1px solid #c7a64b;
+            direction: rtl;
+        }
+
+        /* التعديل هنا: خلفية بيضاء مع حد ذهبي لعنوان الأخبار */
+        .ticker-title {
+            background: #ffffff;
+            color: #164d75;
+            padding: 12px 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            z-index: 2;
+            font-size: 15px;
+            border-left: 3px solid #c7a64b;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        }
+
+        .ticker-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 25s linear infinite;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .ticker-container:hover .ticker-text {
+            animation-play-state: paused;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 15px;
+        }
+
+        .ticker-item::after {
+            content: "•";
+            margin-right: 30px;
+            color: #c7a64b;
+        }
+
+        .ticker-item:last-child::after {
+            content: "";
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); }
+        }
+
         /* Contact Fixed Floating Buttons */
         .contact {
             position: fixed;
@@ -165,13 +229,14 @@
             font-size: 14px;
         }
 
-        /* Mobile Responsive */
         @media (max-width: 650px) {
             .container { padding: 20px 12px 80px; }
             .header h1 { font-size: 28px; }
             .header h2 { font-size: 16px; }
             .links { grid-template-columns: 1fr; }
             .contact { left: 15px; bottom: 15px; }
+            .ticker-title { padding: 10px 12px; font-size: 13px; }
+            .ticker-text { font-size: 13px; }
         }
     </style>
 </head>
@@ -192,10 +257,19 @@
         <div class="section-title">Quick Links</div>
         <div class="links">
             <a href="https://script.google.com/macros/s/AKfycbwya1VZnZsYWKhXT1_-C5P0QSJIgbLYzOfXpvOl2u8GFTGLkzvgBf3gkalP-Tfcms5G/exec" target="_blank" class="link-card">🎓 Grade 6-A Student Portal</a>
-            <a href="https://script.google.com/macros/s/AKfycbxcFWNz2kN8YRLrl0LH-7cSo2qV_7qoaRrUopilmUev8mXbApfgr3OyU39TFVnKI7sE/exec" target="_blank" class="link-card">🎓 Grade 6-B Student Portal</a>
             <a href="https://script.google.com/macros/s/AKfycbwW0WT243Q2HfizhHqvW74AHD1ZED0RqpTJ3zCTeO2ZrystITlSd3Jwso2OGRBNlgUM/exec" target="_blank" class="link-card">🎓 Grade 8-A Student Portal</a>
             <a href="https://script.google.com/macros/s/AKfycbyYILdLj1LAtRKKw91Ri8uBgBrEP0brTJ4UFlBiGi_FBYE9nHvuVi8cPDuS2q1KP4JD2g/exec" target="_blank" class="link-card">🎓 Grade 8-B Student Portal</a>
             <a href="https://drive.google.com/drive/folders/137dyivq33Zl0wfpvi4ZS58alzpwUj6cX?usp=drive_link" target="_blank" class="link-card">📰 School Magazine</a>
+        </div>
+    </div>
+
+    <!-- ================= NEWS TICKER / الإعلانات ================= -->
+    <div class="ticker-container">
+        <div class="ticker-title">📢 أحدث الأخبار</div>
+        <div class="ticker-wrapper">
+            <div class="ticker-text" id="newsTicker">
+                <span class="ticker-item">جاري تحميل الأخبار...</span>
+            </div>
         </div>
     </div>
 
@@ -205,16 +279,37 @@
 
 <!-- ================= CONTACT ICONS ================= -->
 <div class="contact">
-    <a href="https://wa.me/0096875095571" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/+96875095571" target="_blank" aria-label="WhatsApp">
         💬
         <span>WhatsApp</span>
     </a>
-    <a href="mailto:salaheldin.m.abdin@gmail.com
-" aria-label="Email">
+    <a href="mailto:salaheldin.m.abdin@gmail.com" aria-label="Email">
         ✉️
         <span>Email Me</span>
     </a>
 </div>
+
+<!-- ================= JAVASCRIPT FETCH ================= -->
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-upqzEi67BjSS05X8QnilJnYxGmufh8bKLw-JaXmZxQhVEoJbi6Uv2W8ywAxADdWbEg/exec";
+
+    fetch(SCRIPT_URL)
+        .then(response => response.json())
+        .then(newsArray => {
+            const tickerContainer = document.getElementById('newsTicker');
+            if (newsArray && newsArray.length > 0) {
+                tickerContainer.innerHTML = newsArray
+                    .map(item => `<span class="ticker-item">${item}</span>`)
+                    .join('');
+            } else {
+                tickerContainer.innerHTML = `<span class="ticker-item">لا توجد أخبار جديدة حالياً</span>`;
+            }
+        })
+        .catch(error => {
+            console.error("Error loading news:", error);
+            document.getElementById('newsTicker').innerHTML = `<span class="ticker-item">أهلاً بكم في البوابة التعليمية</span>`;
+        });
+</script>
 
 </body>
 </html>
